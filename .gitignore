@@ -20,7 +20,7 @@ public/dist/
 node_modules/
 
 # Bower
-bower_components/
+client/lib
 
 # WebStorm files
 .idea/

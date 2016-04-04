@@ -3,8 +3,18 @@
   <head>
     <title> note it.</title>
   </head>
-  <body>
-  <header> Hello World </header>
+  <body ng-app='note'>
+  <header>
+  <h1> note it. </h1>
+  </header>
 
+  <div ng-view></div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/auth/auth.js"></script>
+    <script src="app/notes/notes.js"></script>
+    <script src="app/services.js"></script>
   </body>
 </html>
