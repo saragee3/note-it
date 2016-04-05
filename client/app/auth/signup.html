@@ -1,4 +1,8 @@
-<h2> sign up</h2>
-<input type="text" placeholder="first name" ng-model="first"/>
-<input type="text" placeholder="username" ng-model="newuser" />
-<button ng-click="signup()"> Submit </button>
+<div>
+  <h2> sign up</h2>
+</div>
+<form class="signup">
+  <input id="firstname" type="text" placeholder="first name" ng-model="first" autofocus/>
+  <input id="username" type="text" placeholder="username" ng-model="newuser" />
+  <button id="enter" ng-click="signup()"> Submit </button>
+</form>
