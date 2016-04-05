@@ -19,6 +19,7 @@
     "grunt-shell": "^1.2.1",
     "mongoose": "^4.4.11",
     "nodemon": "^1.9.1",
+    "normalize.css": "^4.0.0",
     "q": "^1.4.1",
     "request": "^2.69.0"
   }
