@@ -1,14 +1,10 @@
 angular.module('note.notes', [])
 
-.controller('NotesController', function ($scope, Auth, Notes) {
+.controller('NotesController', function ($scope, $location, Auth, Notes) {
   $scope.firstname = Auth.firstname[0]
 
-  $scope.go = function() {
-    Notes.location($scope.street, $scope.city, $scope.date)
-  }
-
   $scope.check = function() {
-    if ($scope.street.length > 0 || $scope.city.length > 0) {
+    if ($scope.street.length > 0 && $scope.city.length > 0) {
       $scope.go();
     }
       $scope.street = '';
@@ -16,18 +12,33 @@ angular.module('note.notes', [])
       $scope.date = '';
   }
 
+  $scope.go = function() {
+    Notes.location($scope.street, $scope.city, $scope.date)
+  }
+
   $scope.locations = Notes.locations;
-  $scope.dest = Notes.dest;
 
   $scope.delete = function(index) {
-    Notes.locations.splice(index, 1);
+    Notes.locations.splice(Notes.index, 1);
   }
+
+  $scope.addTime = function () {
+    console.log($scope.time)
+    Notes.addTime($scope.time);
+  }
+
+  $scope.facts = function () {
+    $location.path('/funfacts')
+  }
+
 
 })
 
 .factory('Notes', function () {
 
   var locations = [];
+  var locFact = [];
+  var cityFact = [];
 
   var location = function(street, city, date) {
     var address = street + ',' + city;
@@ -36,17 +47,30 @@ angular.module('note.notes', [])
 
         location: "http://maps.googleapis.com/maps/api/streetview?size=500x250&location=" + address, 
         dest: street,
+        city: city,
         date: date 
 
       });
 
-
+    locFact.push(street)
+    cityFact.push(city)
     console.log('locations', locations)
+    console.log('loc', locFact)
+    console.log('city', cityFact)
+
   }
+
+  var addTime = function (time) {
+    console.log(time)
+  }
+
 
   return {
     locations: locations,
-    location: location
+    location: location,
+    addTime: addTime,
+    cityFact: cityFact,
+    locFact: locFact
   }
  })
 
