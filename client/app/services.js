@@ -1,4 +1,5 @@
 angular.module('note.services', [
+  'note.facts',
   'note.notes'
   ])
 
@@ -10,9 +11,7 @@ angular.module('note.services', [
   var articles = []
 
   var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' +
-        city + '&format=json&callback=wikiCallback';
-
-  var fb = 'http://graph.facebook.com/';
+        city + '&format=json';
 
   var getWiki = function () {
     return $http({
@@ -22,9 +21,17 @@ angular.module('note.services', [
         'Content-Type': 'application/json'
       }
     })
-    .then(function mySuccess(res) {
-      console.log(res.data)
-      articles.push(res.data)
+    .then(function (res) {
+      var data = res.data[1];
+      for (var i = 0; i < 4; i++) {
+        articles.push({
+          article: data[i], 
+          url: 'http://en.wikipedia.org/wiki/' + data[i]
+        });
+        console.log(i + ' : ' + data[i])
+      }
+      console.log('articles', articles)
+      return articles;
     })
   }
 
@@ -34,8 +41,7 @@ angular.module('note.services', [
     city: city,
     articles: articles,
     wikiUrl: wikiUrl,
-    getWiki: getWiki,
-    fb: fb
+    getWiki: getWiki
   }
 
 })
