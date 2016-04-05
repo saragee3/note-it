@@ -1,7 +1,6 @@
 angular.module('note', [
   'note.auth',
   'note.notes',
-  'note.services',
   'ngRoute'
   ])
 .config(function ($routeProvider) {
@@ -12,6 +11,6 @@ angular.module('note', [
   })
   .when('/notes', {
     templateUrl: 'app/notes/notes.html',
-    controller: 'NoteController'
+    controller: 'NotesController'
   })
 })
