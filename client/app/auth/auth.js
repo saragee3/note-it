@@ -6,8 +6,6 @@ angular.module('note.auth', [])
     Auth.currentUser($scope.first);
     $location.path('/notes')
   }
-
-  
 })
 
  .factory('Auth', function () {
@@ -21,5 +19,5 @@ angular.module('note.auth', [])
   return {
     firstname: firstname,
     currentUser: currentUser
-  }  
-})
+  }
+});
