@@ -1,1 +1,27 @@
-<h2> Welcome! </h2>
+<div class="top">
+  <h2> Welcome, {{ firstname | capitalize }}! </h2>
+  <input type="text" class="search" ng-model="search" placeholder="search"> 
+</div>
+<div>
+  <form>
+    <h3> where: </h3>
+    <input type="text" placeholder="Street" ng-model="street" required autofocus/>
+    <input type="text" placeholder="City, State" ng-model="city" required>
+    <h3> when: </h3> <input type="month" ng-model="date">
+    <button ng-click="check()"> go to there! </button>
+  </form>
+</div>      
+  
+<div class="container">
+
+  <div ng-repeat="place in locations | filter:search | orderBy:'-date'">
+    <img ng-src= "{{ place.location }}" />
+  
+    <h4> {{ place.dest | capitalize:true }} </h4>
+
+  <h4> {{ place.date | date: 'MMM/yyyy'}} </h4>
+  
+  
+  <button ng-click="delete()"> delete </button>
+  </div>
+</div>
