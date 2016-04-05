@@ -4,12 +4,13 @@ body {
 }
 
 header {
-  background-color: #baeaa5;
+  background-color: #CCFFBB;
   width: 100%;
   height: 150px;
   letter-spacing: 3px;
-  position: absolute;
   position: fixed;
+  margin: 0;
+  padding: 0;
 }
 
 .noteit { 
@@ -19,15 +20,18 @@ header {
 
 h2 {
   display: inline;
-  position: relative;
   font-size: 90px;
   width: 50%;
-  margin-left: 10px;
+}
+
+h3 {
+  font-family: 'Alegreya Sans SC';
+  font-weight: 400;
 }
 
 .signup {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 #firstname,
@@ -46,35 +50,41 @@ h2 {
 #enter {
   border: none;
   outline: none;
-  border: 2px solid black;
+  margin-top: 10px;
   background-color: white;
   width: 15%;
   height: 30px;
-  line-height: 25px;
+  line-height: 28px;
+}
+
+#enter:hover {
+  background-color: #C0C0C0;
 }
 
 
 #welcome {
-  display: inline;
-  position: relative;
-  font-size: 92px;
+  font-family: 'Arial';
+  font-weight: 400;
+  font-size: 28px;
   width: 50%;
 }
 
 .search {
   position: fixed;
-  margin-top: 75px;
-  margin-left: 150px;
-  width: 15%;
-  height: 25px;
-  overflow: none;
-  border: 1px solid black;
+  border: none;
   outline: none;
+  margin-top: 100px;
+  margin-left: 730px;
+  width: 495px;
+  height: 25px;
+  background-color: #CCFFBB;
+  color: #151fb2;
+  border-bottom: 1px solid black;
 }
 
 .where {
   text-align: left;
-  margin-top: 200px;
+  margin-top: 175px;
   margin-left: 50px;
   position: fixed;
 }
@@ -84,31 +94,41 @@ h2 {
   border: none;
   outline: none;
   border-bottom: 2px solid black;
+  margin-top: 20px;
   overflow: auto;
+}
+
+#city {
+  margin-left: 20px;
+}
+
+#when {
+  margin-top: 50px;
 }
 
 #month {
   border: none;
   outline: none;
   border-bottom: 2px solid black;
-  margin-bottom: 100px;
+  margin-top: 20px;
 }
 
 #gothere {
   border: none;
   outline: none;
-  border: 2px solid black;
-  background-color: white;
-  width: 40%;
-  height: 30px;
-  float: right; 
-  margin-right: 10px;
+  color: white;
+  position: fixed;
+  background-color: #151fb2;
+  margin-top: 500px;
+  margin-left: 50px;
+  width: 30%;
+  height: 50px;
 }
 
 .container {
   float: right;
   margin-right: 50px;
-  padding-top: 100px;
+  padding-top: 175px;
   overflow: scroll;
 }
 
@@ -126,10 +146,37 @@ h2 {
 #delete {
   border: none;
   outline: none;
-  border: 2px solid black;
   background-color: white;
   width: 15%;
   height: 30px;
   margin-bottom: 20px;
   line-height: 25px
+}
+
+#facts {
+  border: none;
+  outline: none;
+  background-color: white;
+  width: 15%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+#add {
+  border: none;
+  outline: none;
+  background-color: white;
+  width: 15%;
+  height: 30px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+#loc {
+  font-family: 'Helvetica';
+  font-weight: 200;
+  padding-top: 200px;
+  margin-left: 50px;
+  font-size: 36px;
+  text-align: center;
 }
