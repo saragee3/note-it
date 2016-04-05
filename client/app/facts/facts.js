@@ -4,8 +4,7 @@ angular.module('note.facts', [])
 
   $scope.currentLoc = Notes.locFact[0];
   $scope.currentCity = Notes.cityFact[0];
-  console.log('street', $scope.currentLoc)
-  console.log('city', $scope.currentCity)
-  
+
+  $scope.articles = Wiki.articles;
 
 });
