@@ -1,14 +1,15 @@
-  <h2 id="welcome"> Welcome, {{ firstname | capitalize }}! </h2>
   <input type="text" class="search" ng-model="search" placeholder="search"> 
 
 <div>
   <form class="where">
+  <h2 id="welcome"> Welcome, {{ firstname | capitalize }}! </h2>
     <h3> where: </h3>
-    <input id="street" type="text" placeholder="Street" ng-model="street" ngRequired="required" autofocus/>
-    <input id="city" type="text" placeholder="City, State" ng-model="city" ngRequired="required" />
-    <h3 id="when"> when: </h3> <input id="month" type="month" ng-model="date" ngRequired="required" />
-    <button id="gothere" ng-click="check()"> go to there! </button>
+    <input id="street" type="text" placeholder="Street" ng-model="street" autofocus/>
+    <input id="city" type="text" placeholder="City" ng-model="city" />
+    <h3 id="when"> when: </h3> <input id="month" type="month" ng-model="date" />
   </form>
+
+    <button id="gothere" ng-click="check()"> go to there! </button>
 </div>      
   
 <div class="container">
@@ -18,9 +19,13 @@
   
     <h4 id="dest"> {{ place.dest | capitalize:true }} </h4>
 
-  <h4 id="date"> {{ place.date | date: 'MMM / yyyy'}} </h4>
-  
-  
-  <button id="delete" ng-click="delete()"> delete </button>
+    <h4 id="date"> {{ place.date | date: 'MMM / yyyy'}} </h4>
+    
+    <button id="delete" ng-click="delete($index)"> delete </button>
+    <button id="facts" ng-click="facts()"> fun facts </button>
+
+    <input id="addMonth" type="month" ng-if="!place.date" ng-model="time" />
+    <button id="add" ng-if="!place.date" ng-click="addTime()"> add date </button>
+
   </div>
 </div>
