@@ -2,6 +2,7 @@ angular.module('note.notes', [])
 
 .controller('NotesController', function ($scope, $location, Auth, Notes) {
   $scope.firstname = Auth.firstname[0]
+  $scope.locations = Notes.locations;
 
   $scope.check = function() {
     if ($scope.street.length > 0 && $scope.city.length > 0) {
@@ -18,8 +19,9 @@ angular.module('note.notes', [])
 
   $scope.locations = Notes.locations;
 
-  $scope.delete = function(index) {
-    Notes.locations.splice(Notes.index, 1);
+  $scope.delete = function(place) {
+    var index = $scope.locations.indexOf(place)
+    $scope.locations.splice(index, 1);
   }
 
   $scope.addTime = function () {
@@ -27,11 +29,9 @@ angular.module('note.notes', [])
     Notes.addTime($scope.time);
   }
 
-  $scope.facts = function () {
+  $scope.facts = function (city) {
     $location.path('/funfacts')
   }
-
-
 })
 
 .factory('Notes', function () {
@@ -52,8 +52,8 @@ angular.module('note.notes', [])
 
       });
 
-    locFact.push(street)
-    cityFact.push(city)
+    locFact.push(street);
+    cityFact.push(city);
     console.log('locations', locations)
     console.log('loc', locFact)
     console.log('city', cityFact)
