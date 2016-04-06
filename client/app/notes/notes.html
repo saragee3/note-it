@@ -21,8 +21,8 @@
 
     <h4 id="date"> {{ place.date | date: 'MMM / yyyy'}} </h4>
     
-    <button id="delete" ng-click="delete($index)"> delete </button>
-    <button id="facts" ng-click="facts()"> fun facts </button>
+    <button id="delete" ng-click="delete(place)"> delete </button>
+    <button id="facts" ng-click="facts($scope.city)"> fun facts </button>
 
     <input id="addMonth" type="month" ng-if="!place.date" ng-model="time" />
     <button id="add" ng-if="!place.date" ng-click="addTime()"> add date </button>
