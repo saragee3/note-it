@@ -1,47 +1,62 @@
 angular.module('note.services', [
-  'note.facts',
-  'note.notes'
+  'note.notes',
+  'note.auth'
   ])
 
-.factory('Wiki', function ($http, Notes) {
-
-  var city = Notes.cityFact[0];
-  console.log(city);
+.factory('Http', function ($http, Notes) {
 
   var articles = []
 
-  var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' +
-        city + '&format=json';
+  var config = {
+    params: {
+        format: "json",
+        action: "query",
+        prop: "extracts",
+        exchars: "140",
+        exlimit: "10",
+        exintro: "",
+        explaintext: "",
+        rawcontinue: "",
+        generator: "search",
+        gsrlimit: "4",
+        callback: "JSON_CALLBACK"
+    }
+  };
 
-  var getWiki = function () {
-    return $http({
-      method: 'GET',
-      url: wikiUrl, 
-      headers: {
-        'Content-Type': 'application/json'
+  var url = "https://en.wikipedia.org/w/api.php?";
+
+  var getWiki = function(data) {
+    console.log(data)
+    config.params.gsrsearch = data;
+    return $http.jsonp(url,config).then(function(req) {
+      var wiki = req.data.query.pages;
+      if (articles.length) {
+        articles = [];
+      } 
+      for (var key in wiki) {
+        articles.push(wiki[key]);
       }
-    })
-    .then(function (res) {
-      var data = res.data[1];
-      for (var i = 0; i < 4; i++) {
-        articles.push({
-          article: data[i], 
-          url: 'http://en.wikipedia.org/wiki/' + data[i]
-        });
-        console.log(i + ' : ' + data[i])
-      }
-      console.log('articles', articles)
-      return articles;
-    })
+      console.log(articles);
+    });
   }
 
-  getWiki();
+
+  var signUpToDB = function(data) {
+    $http({
+      method: 'POST',
+      url: '/users',
+      data: data
+    })
+    .then(function(res) {
+      console.log('line 45', res)
+      return res;
+    });
+  };
 
   return {
-    city: city,
     articles: articles,
-    wikiUrl: wikiUrl,
-    getWiki: getWiki
+    getWiki: getWiki,
+    signUpToDB: signUpToDB
   }
 
-})
+});
