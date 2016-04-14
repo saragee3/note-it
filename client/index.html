@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> note it.</title>
-    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-  </head>
-  <body ng-app='note'>
-  <header>
-    <h1 class="noteit"> note it. </h1>
-  </header>
+<head>
+  <title> note it.</title>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="main.css"> -->
+  <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+</head>
 
-  <div ng-view></div>
+<body ng-app="note">
 
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/auth/auth.js"></script>
-    <script src="app/notes/notes.js"></script>
-    <script src="app/facts/facts.js"></script>
-    <script src="app/services.js"></script>
-  </body>
+<header>
+  <h1 class="noteit"> note it. </h1>
+</header>
+
+<div class="spacer"></div>
+
+<div ng-view></div>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
+<script src="app/app.js"></script>
+<script src="app/auth/auth.js"></script>
+<script src="app/notes/notes.js"></script>
+<script src="app/services.js"></script>
+</body>
 </html>
