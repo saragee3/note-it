@@ -1,7 +1,7 @@
-angular.module('note.notes', [])
+angular.module('note.notes', ['smoothScroll'])
 
-.controller('NotesController', function ($scope, $location, Auth, Notes) {
-  $scope.firstname = Auth.firstname[0]
+.controller('NotesController', function ($scope, $location, Auth, Notes, Http) {
+  $scope.firstname = Auth.firstname[0];
   $scope.locations = Notes.locations;
 
   $scope.check = function() {
@@ -11,72 +11,57 @@ angular.module('note.notes', [])
       $scope.street = '';
       $scope.city = '';
       $scope.date = '';
-  }
+  };
 
   $scope.go = function() {
-    Notes.location($scope.street, $scope.city, $scope.date)
-  }
+    Notes.location($scope.street, $scope.city, $scope.date);
+    Http.getWiki($scope.city);
+  };
 
   $scope.locations = Notes.locations;
+  $scope.articles = Http.articles;
+  console.log($scope.articles)
 
   $scope.delete = function(place) {
-    var index = $scope.locations.indexOf(place)
+    var index = $scope.locations.indexOf(place);
     $scope.locations.splice(index, 1);
-  }
+  };
 
   $scope.addTime = function () {
     console.log($scope.time)
     Notes.addTime($scope.time);
   }
-
-  $scope.facts = function (city) {
-    $location.path('/funfacts')
-  }
 })
+
 
 .factory('Notes', function () {
 
   var locations = [];
-  var locFact = [];
-  var cityFact = [];
 
   var location = function(street, city, date) {
     var address = street + ',' + city;
 
     locations.push({ 
 
-        location: "http://maps.googleapis.com/maps/api/streetview?size=500x250&location=" + address, 
+        location: "http://maps.googleapis.com/maps/api/streetview?size=800x400&location=" + address, 
         dest: street,
         city: city,
         date: date 
-
+        
       });
-
-    locFact.push(street);
-    cityFact.push(city);
-    console.log('locations', locations)
-    console.log('loc', locFact)
-    console.log('city', cityFact)
-
-  }
-
-  var addTime = function (time) {
-    console.log(time)
-  }
+    currentCity = city;
+  };
 
 
   return {
     locations: locations,
-    location: location,
-    addTime: addTime,
-    cityFact: cityFact,
-    locFact: locFact
+    location: location
   }
  })
 
 .filter('capitalize', function() {
-    return function(input, all) {
-      var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
-      return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
-    }
-  })
+  return function(input, all) {
+    var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
+    return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
+  }
+});
