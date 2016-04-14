@@ -1,7 +1,12 @@
-<h1 id="sign"> sign up</h1>
+<h1 class="sign" col-xs-6> sign up | <a ng-href="/signin"> sign in</a> </h1>
 
-<form class="signup">
-  <input id="firstname" type="text" placeholder="first name" ng-model="first" autofocus/>
-  <input id="username" type="text" placeholder="username" ng-model="newuser" />
-  <button id="enter" ng-click="signup()"> Submit </button>
+<form class="form-horizontal">
+  <div class="form-group">
+    <div class="col-xs-8 col-md-6">
+      <input type="text" class="form-control firstname" placeholder="first name" ng-model="first" autofocus/>
+      <input type="text" class="form-control username" placeholder="username" ng-model="newuser" />
+      <input type="password" class="form-control password" placeholder="password" ng-model="pass" />
+      <button class="btn btn-default btn-block enter" ng-click="signup()"> Submit </button>
+    </div>
+  </div>
 </form>
