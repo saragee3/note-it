@@ -19,22 +19,22 @@ a:hover {
 header {
   background-color: #CCFFBB;
   width: 100%;
-  height: 150px;
+  height: 125px;
   letter-spacing: 3px;
   position: fixed;
   top: 0;
-  overflow: none;
+  z-index: 999;
 }
 
 .spacer {
-  height: 150px;
-  margin-bottom: 25px;
+  height: 100px;
+  margin-bottom: 30px;
   overflow: hidden;
 }
 
 .noteit {
   position: absolute;
-  bottom: 25px;
+  bottom: 10px;
   left: 25px;
 }
 
@@ -118,30 +118,34 @@ h3 {
 
 .chevron {
   background: rgba(0, 0, 0, 0);
+  margin-bottom: 40px;
 }
 
-#date,
-#dest {
-  font-family: 'Arial';
-  font-weight: 800;
-  font-size: 20px;
-  margin-top: 5px;
-  text-align: right;
-  display: block;
+.img-responsive {
+  width: 100%;
+  max-width: 100%;
 }
 
 #delete,
-#facts,
+#save,
 #add {
   font-family: 'Alegreya Sans SC';
   font-weight: 400;
   border: none;
   outline: none;
-  background-color: white;
-  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0);
+  margin-top: 10px;
 }
 
-#addMonth {
-  float: right;
+#dest {
+  font-family: 'Arial';
+  font-weight: 800;
+  font-size: 20px;
+  text-align: right;
+  margin-bottom: 100px;
 }
+
+/*#addMonth {
+  float: right;
+}*/
 

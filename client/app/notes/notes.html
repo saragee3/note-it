@@ -23,26 +23,27 @@
 </div>
 
 <div id="content" class="container">
-  <div class="col-xs-12">
-    <div ng-repeat="place in locations | filter:search | orderBy:'date'">
-      <img class="img-fluid" ng-src= "{{ place.location }}" />
-
-      <h4 id="dest"> {{ place.dest | capitalize:true }} </h4>
-
-      <h4 id="date"> {{ place.date | date: 'MMM / yyyy'}} </h4>
-    
+  <div ng-repeat="place in locations | orderBy:'date'">
+    <div class="col-xs-8">
+      <img class="img-fluid img-responsive" ng-src= "{{ place.location }}" />
       <button class="btn-default btn-xs" id="delete" ng-click="delete(place)"> delete </button>
-      <button class="btn-default btn-xs" id="facts" ng-click="facts($scope.city)"> fun facts </button>
-
-        <p ng-repeat="link in articles"> 
+      <button class="btn-default btn-xs" id="save"> save </button>
+    </div>
+    <div class="col-xs-4">
+      <h4 id="dest"> {{ place.dest | capitalize:true }} <br />
+        {{ place.date | date: 'MMM / yyyy'}}
+      </h4>
+      <p ng-repeat="link in locations.articles"> 
         <a ng-href="https://en.wikipedia.org/wiki/{{link.title}}" target="_blank"> 
-          {{ link.title }} 
+          <span class="title">{{ link.title }}</span>
         </a>
       </p>
 
-      <input id="addMonth" type="month" ng-if="!place.date" ng-model="time" />
-      <button class="btn-default btn-xs" id="add" ng-if="!place.date" ng-click="addTime()"> add date </button> 
+
+<!--       <input id="addMonth" type="month" ng-if="!place.date" ng-model="time" />
+      <button class="btn-default btn-xs" id="add" ng-if="!place.date" ng-click="addTime()"> add date </button>  -->
     </div>
   </div>
 </div>
+
 

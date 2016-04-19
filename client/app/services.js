@@ -26,17 +26,18 @@ angular.module('note.services', [
   var url = "https://en.wikipedia.org/w/api.php?";
 
   var getWiki = function(data) {
-    console.log(data)
+    console.log('location data', data)
     config.params.gsrsearch = data;
     return $http.jsonp(url,config).then(function(req) {
       var wiki = req.data.query.pages;
       if (articles.length) {
         articles = [];
+        console.log('has to be empty',articles)
       } 
       for (var key in wiki) {
         articles.push(wiki[key]);
       }
-      console.log(articles);
+      console.log('articles', articles);
     });
   }
 

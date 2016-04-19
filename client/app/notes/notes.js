@@ -3,6 +3,7 @@ angular.module('note.notes', ['smoothScroll'])
 .controller('NotesController', function ($scope, $location, Auth, Notes, Http) {
   $scope.firstname = Auth.firstname[0];
   $scope.locations = Notes.locations;
+  $scope.locations.articles = Http.articles;
 
   $scope.check = function() {
     if ($scope.street.length > 0 && $scope.city.length > 0) {
@@ -18,9 +19,6 @@ angular.module('note.notes', ['smoothScroll'])
     Http.getWiki($scope.city);
   };
 
-  $scope.locations = Notes.locations;
-  $scope.articles = Http.articles;
-  console.log($scope.articles)
 
   $scope.delete = function(place) {
     var index = $scope.locations.indexOf(place);

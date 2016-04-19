@@ -2,8 +2,7 @@ angular.module('note', [
   'note.auth',
   'note.notes',
   'note.services',
-  'ngRoute',
-  'smoothScroll'
+  'ngRoute'
   ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
