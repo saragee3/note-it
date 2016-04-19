@@ -1,4 +1,4 @@
-angular.module('note.notes', ['smoothScroll'])
+angular.module('note.notes', [])
 
 .controller('NotesController', function ($scope, $location, Auth, Notes, Http) {
   $scope.firstname = Auth.firstname[0];
