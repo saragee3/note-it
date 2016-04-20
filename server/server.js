@@ -24,6 +24,7 @@ app.use(parser.json());
 app.use(express.static(__dirname + '/../client'));
 
 app.post('/users', UserController.signup);
+app.post('/users/saveDestination', UserController.saveDestination);
 
 var port = process.env.PORT || 8080;
 
